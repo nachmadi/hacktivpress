@@ -10,6 +10,16 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/hello',
+      name: 'Hello',
+      component: Hello
+    },
+    {
+      path: '/sign-up-form',
+      name: 'sign-up-form',
+      component: Hello
     }
   ]
 })
