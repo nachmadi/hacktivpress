@@ -6,12 +6,17 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 require('dotenv').config();
 
+var routerUser = require('./routers/user');
+var routerArticle = require('./routers/article');
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.use(cors()); // cors harus diatas map
+app.use(cors());
+app.use('/users', routerUser);
+app.use('/articles', routerArticle);
 
 mongoose.connect('mongodb://localhost:27017/final_two', (err)=> {
   if (err) {
