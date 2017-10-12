@@ -37,7 +37,7 @@
                 </fieldset>
               </form>
             </div>
-            <Rightbar/>
+
           </div>
         </div>
       <FooterBlog/>
@@ -46,7 +46,6 @@
 <script>
 import HeaderBlog from '@/components/HeaderBlog'
 import Sidebar from '@/components/Sidebar'
-import Rightbar from '@/components/Rightbar'
 import FooterBlog from '@/components/FooterBlog'
 
 import axios from "axios"
@@ -64,7 +63,6 @@ export default {
   components: {
     HeaderBlog,
     Sidebar,
-    Rightbar,
     FooterBlog
   } ,
   methods: {

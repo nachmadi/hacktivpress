@@ -5,10 +5,10 @@
             <div class="avatar"></div>
             <div class="form-box">
                 <form class="form-horizontal" @submit.prevent="login();">
-                    <input name="user" type="text" placeholder="username" v-model="email">
-                    <input type="password" placeholder="password" v-model="pass">
+                    <input name="user" type="text" placeholder="username" v-model="username">
+                    <input type="password" placeholder="password" v-model="password">
                     <button class="btn btn-info btn-block login" type="submit">Login</button>
-                    <router-link :to="{ name: 'sign-up-form'}">Sign UP</router-link>
+                    <router-link :to="{ name: 'sign-up'}">Sign UP</router-link>
                 </form>
             </div>
       </div>
@@ -20,13 +20,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      email: "",
-      pass: ""
+      username: "",
+      password: ""
     }
   },
   methods: {
     login (){
-      axios.post(`http://localhost:3000/users/signin`, {email:this.email, user_pass: this.pass})
+      axios.post(`http://localhost:3000/users/signin`, {password:this.password, password: this.password})
       .then(data => {
           console.log(data)
           localStorage.setItem('tokenjwt',data);
@@ -36,13 +36,14 @@ export default {
         console.log(err)
       })
     }
-  },
-  created () {
-    var tokenJwt = localStorage.getItem('tokenjwt')
-    if(tokenJwt!=null){
-      this.$router.push('/hello');
-    }
   }
+//   ,
+//   created () {
+//     var tokenJwt = localStorage.getItem('tokenjwt')
+//     if(tokenJwt!=null){
+//       this.$router.push('/hello');
+//     }
+//   }
 }
 </script>
 
