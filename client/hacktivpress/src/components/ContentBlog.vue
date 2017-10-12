@@ -1,17 +1,17 @@
 <template lang="html">
   <div class="container-fluid text-center">
     <div class="col-md-10">
-      <Article v-for="article in articles" v-bind:propsArticle="article" v-bind:key="article._id"/>
+      <ArticleIsi v-for="article in articles" v-bind:propsArticle="article" v-bind:key="article._id"/>
     </div>
   </div>
 </template>
 
 <script>
-import Article from '@/components/Article'
+import ArticleIsi from '@/components/ArticleIsi'
 import { mapActions, mapState } from 'vuex'
 export default {
   components: {
-    Article
+    ArticleIsi
   },
   computed: {
     ...mapState([

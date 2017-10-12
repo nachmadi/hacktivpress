@@ -3,11 +3,12 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
   createArticle: (req,res)=>{
+              var o_id = new ObjectId(req.body.author);
                Article.create({
                    title: req.body.title,
                    content: req.body.content,
                    category: req.body.category,
-                   author:  ""
+                   author:  o_id
                 })
                 .then(data=>{
                    res.send(data);
@@ -48,11 +49,11 @@ module.exports = {
                 })
   },
   updateArticle: (req, res)=>{
-              var id = req.params._id;
+              var id = req.params.id;
               var o_id = new ObjectId(id);
               var query = {_id:o_id}
               console.log(query);
-              Todolist.findOneAndUpdate(query,{
+              Article.findOneAndUpdate(query,{
                 title: req.body.title,
                 content: req.body.content,
                 category: req.body.category,

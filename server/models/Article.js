@@ -6,7 +6,7 @@ var ArticleSchema = new mongoose.Schema(
     title: String,
     content: String,
     category: String,
-    author: { type: Schema.Types.ObjectId, ref: 'Customer' }
+    author: { type: Schema.Types.ObjectId, ref: 'User' }
   }
 )
 

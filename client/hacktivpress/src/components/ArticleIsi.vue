@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="col-md-8">
+  <div class="col-md-10">
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">{{propsArticle.title}}</h3>
@@ -26,7 +26,6 @@ export default {
     ...mapActions([
       'deleteOneArticle',
       'setArticle'
-
     ])
   }
 }

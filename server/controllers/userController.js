@@ -5,18 +5,20 @@ var jwt = require('jsonwebtoken');
 module.exports = {
   // login
   signin : (req,res) => {
+    console.log("haloo");
     user.findOne({
       username: req.body.username
     })
     .then(datauser => {
       let saltFrmDb = datauser.salt;
-      let passFromCli = helper.getPassWithSalt(req.body.password,saltFrmDb);
-      if(datauser.username==passFromCli){
+      let passFromCli = helper.getPassWithSalt(req.body.password, saltFrmDb);
+      console.log(passFromCli);
+      console.log(datauser.password);
+      if(datauser.password==passFromCli){
         jwt.sign({ username: datauser.username,
                    email: datauser.email,
                    _id: datauser._id
-        }, "bismillah",// modul require('dotenv').config() letak file di root
-        // }, process.env.SECRET_TOKEN,// modul require('dotenv').config() letak file di root
+        }, "bismillah",
         { expiresIn: 60 * 60 },(err,token)=>{
              if(!err){
                 res.send(token);
@@ -44,6 +46,7 @@ module.exports = {
             console.log(md5_pass);
             user.create({
               password: md5_pass,
+              username: req.body.username,
               email: req.body.email,
               salt: salt
             })
